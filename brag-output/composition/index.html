@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      @font-face { font-family: "PingFang TC"; src: local("PingFang TC"); }
+      @font-face { font-family: "Noto Sans TC"; src: local("Noto Sans TC"); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1080px; height: 1920px; overflow: hidden; background: #08090c;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", sans-serif;
+        color: #fff;
+      }
+      .mono { font-family: "SF Mono", ui-monospace, "JetBrains Mono", Menlo, monospace; }
+      .scene { position: absolute; inset: 0; overflow: hidden; }
+
+      /* 72px grid like the site */
+      .grid-bg {
+        position: absolute; inset: 0; opacity: 0.35;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        background-size: 72px 72px;
+      }
+      .vignette {
+        position: absolute; inset: 0;
+        background: radial-gradient(ellipse at 50% 45%, transparent 45%, rgba(4,5,8,0.55) 100%);
+      }
+
+      /* persistent watermark */
+      #watermark {
+        position: absolute; right: 44px; bottom: 40px; z-index: 50;
+        font-size: 20px; letter-spacing: 0.3em; text-transform: uppercase;
+        color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 14px;
+      }
+      #watermark::before { content: ""; width: 30px; height: 2px; background: currentColor; opacity: 0.6; }
+
+      /* Scene 1 — hook */
+      #s1 { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+      #kicker {
+        font-size: 30px; letter-spacing: 0.42em; color: #45d6ff; margin-bottom: 60px;
+      }
+      #kicker .ch { opacity: 0; }
+      #title-main {
+        font-size: 168px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;
+        opacity: 0; text-align: center;
+      }
+      #title-glow {
+        position: absolute; left: 50%; top: 50%; width: 900px; height: 900px;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(circle, rgba(69,214,255,0.22), transparent 60%);
+        opacity: 0; pointer-events: none;
+      }
+
+      /* Scene 2 — hero shot */
+      #hero-img {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; transform: scale(1.04); transform-origin: 50% 46%;
+      }
+      #hero-caption {
+        position: absolute; left: 50%; bottom: 210px; transform: translateX(-50%);
+        white-space: nowrap; font-size: 34px; letter-spacing: 0.14em;
+        color: rgba(255,255,255,0.92);
+        background: rgba(8,9,12,0.55); padding: 22px 46px; border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.12); opacity: 0;
+      }
+
+      /* Scene 3 — spec chips */
+      #s3 { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 88px; }
+      #s3 .s3-kicker {
+        font-size: 26px; letter-spacing: 0.42em; color: #45d6ff; margin-bottom: 10px;
+      }
+      .chip { text-align: center; opacity: 0; }
+      .chip b {
+        display: block; font-size: 150px; font-weight: 700; letter-spacing: -0.01em;
+        color: #fff; line-height: 1.15;
+      }
+      .chip span {
+        display: block; margin-top: 10px; font-size: 30px; letter-spacing: 0.3em;
+        color: rgba(255,255,255,0.55);
+      }
+      .chip .rule {
+        width: 64px; height: 2px; margin: 26px auto 0;
+        background: linear-gradient(90deg, #45d6ff, #58e6a9);
+      }
+
+      /* Scene 4 — samples */
+      #s4 { background: #08090c; }
+      #s4 .s4-kicker {
+        position: absolute; top: 200px; left: 50%; transform: translateX(-50%);
+        font-size: 28px; letter-spacing: 0.42em; color: #45d6ff;
+      }
+      .shot { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 960px; opacity: 0; }
+      .shot img {
+        width: 960px; height: 540px; object-fit: cover; display: block;
+        border-radius: 26px; border: 1px solid rgba(255,255,255,0.12);
+      }
+      .shot .cap {
+        position: absolute; left: 28px; bottom: 28px;
+        font-size: 22px; letter-spacing: 0.2em; color: rgba(255,255,255,0.9);
+        background: rgba(8,9,12,0.6); padding: 14px 26px; border-radius: 999px;
+      }
+
+      /* Scene 5 — reveal + credit */
+      #s5 { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+      #line1, #line2 {
+        font-size: 92px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.5; opacity: 0;
+      }
+      #line2 { color: #45d6ff; }
+      #credit { margin-top: 130px; text-align: center; opacity: 0; }
+      #credit .wordmark { font-size: 64px; font-weight: 800; letter-spacing: 0.3em; }
+      #credit .wordmark em { font-style: normal; color: #45d6ff; }
+      #credit .byline {
+        margin-top: 34px; font-size: 26px; letter-spacing: 0.22em; color: rgba(255,255,255,0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="20"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- Scene 1: hook 0–3.7 -->
+      <div id="s1" class="clip scene" data-start="0" data-duration="3.7" data-track-index="1">
+        <div class="grid-bg"></div>
+        <div id="title-glow"></div>
+        <p id="kicker" class="mono"><span class="ch">I</span><span class="ch">N</span><span class="ch">T</span><span class="ch">R</span><span class="ch">O</span><span class="ch">D</span><span class="ch">U</span><span class="ch">C</span><span class="ch">I</span><span class="ch">N</span><span class="ch">G</span><span class="ch">&nbsp;</span><span class="ch">A</span><span class="ch">U</span><span class="ch">R</span><span class="ch">A</span><span class="ch">&nbsp;</span><span class="ch">X</span></p>
+        <h1 id="title-main">超越所見。</h1>
+        <div class="vignette"></div>
+      </div>
+
+      <!-- Scene 2: hero 3.7–7.0 -->
+      <div id="s2" class="clip scene" data-start="3.7" data-duration="3.3" data-track-index="1">
+        <img id="hero-img" src="assets/img/hero-v.png" alt="" />
+        <p id="hero-caption" class="mono">鈦金屬工藝 × 1 吋感光元件 × A1X 晶片</p>
+      </div>
+
+      <!-- Scene 3: spec chips 7.0–10.5 -->
+      <div id="s3" class="clip scene" data-start="7" data-duration="3.5" data-track-index="1">
+        <div class="grid-bg"></div>
+        <p class="s3-kicker mono">CAMERA SYSTEM</p>
+        <div class="chip" id="chip1">
+          <b class="mono">1"</b><span>感光元件</span><div class="rule"></div>
+        </div>
+        <div class="chip" id="chip2">
+          <b class="mono">ƒ/1.6</b><span>主鏡光圈</span><div class="rule"></div>
+        </div>
+        <div class="chip" id="chip3">
+          <b class="mono">5×</b><span>光學變焦</span><div class="rule"></div>
+        </div>
+        <div class="vignette"></div>
+      </div>
+
+      <!-- Scene 4: samples 10.5–15.0 -->
+      <div id="s4" class="clip scene" data-start="10.5" data-duration="4.5" data-track-index="1">
+        <div class="grid-bg"></div>
+        <p class="s4-kicker mono">SHOT ON AURA X</p>
+        <div class="shot" id="shot-night">
+          <img src="assets/img/sample-night.jpg" alt="" />
+          <span class="cap mono">NIGHT MODE · ISO 800 · 1/8s · ƒ/1.6</span>
+        </div>
+        <div class="shot" id="shot-portrait">
+          <img src="assets/img/sample-portrait.jpg" alt="" />
+          <span class="cap mono">PORTRAIT · 35mm · ƒ/2.0</span>
+        </div>
+        <div class="shot" id="shot-tele">
+          <img src="assets/img/sample-tele.jpg" alt="" />
+          <span class="cap mono">TELEPHOTO · 120mm · 5× OPTICAL</span>
+        </div>
+        <div class="shot" id="shot-macro">
+          <img src="assets/img/sample-macro.jpg" alt="" />
+          <span class="cap mono">MACRO · 3cm</span>
+        </div>
+        <div class="vignette"></div>
+      </div>
+
+      <!-- Scene 5: reveal 15.0–20.0 -->
+      <div id="s5" class="clip scene" data-start="15" data-duration="5" data-track-index="1">
+        <div class="grid-bg"></div>
+        <p id="line1">這不是手機廣告。</p>
+        <p id="line2">是一個網頁。</p>
+        <div id="credit">
+          <div class="wordmark"><em>AURA</em>&nbsp;X</div>
+          <div class="byline mono">作品 · HARRYFAN.GITHUB.IO/BLOG</div>
+        </div>
+        <div class="vignette"></div>
+      </div>
+
+      <!-- persistent watermark -->
+      <div id="watermark" class="clip mono" data-start="0" data-duration="15" data-track-index="9">
+        HARRYFAN.GITHUB.IO/BLOG
+      </div>
+
+      <!-- music bed (pre-faded 20s cut, fade baked in for determinism) -->
+      <audio id="bg-music" data-start="0" data-duration="20" data-track-index="10" data-volume="0.35" src="assets/music/bed-20s.mp3"></audio>
+
+      <!-- SFX: kicker typing (sparse, randomized picks hardcoded) -->
+      <audio id="sfx-01" class="clip" data-start="0.40" data-duration="0.4" data-track-index="11" data-volume="0.5" src="assets/sfx/keyboard/keypress-001.wav"></audio>
+      <audio id="sfx-02" class="clip" data-start="0.58" data-duration="0.4" data-track-index="12" data-volume="0.45" src="assets/sfx/keyboard/keypress-011.wav"></audio>
+      <audio id="sfx-03" class="clip" data-start="0.76" data-duration="0.4" data-track-index="13" data-volume="0.5" src="assets/sfx/keyboard/keypress-019.wav"></audio>
+      <audio id="sfx-04" class="clip" data-start="0.94" data-duration="0.4" data-track-index="14" data-volume="0.45" src="assets/sfx/keyboard/keypress-007.wav"></audio>
+      <audio id="sfx-05" class="clip" data-start="1.12" data-duration="0.4" data-track-index="15" data-volume="0.5" src="assets/sfx/keyboard/keypress-023.wav"></audio>
+      <audio id="sfx-06" class="clip" data-start="1.30" data-duration="0.4" data-track-index="16" data-volume="0.45" src="assets/sfx/keyboard/keypress-015.wav"></audio>
+
+      <!-- SFX: title slam, beat-locked 2.12s -->
+      <audio id="sfx-07" class="clip" data-start="2.05" data-duration="2.5" data-track-index="17" data-volume="0.7" src="assets/sfx/impact/impactBell_heavy_000.ogg"></audio>
+
+      <!-- SFX: spec chips, beat-grid 7.40 / 8.44 / 9.50 -->
+      <audio id="sfx-08" class="clip" data-start="7.35" data-duration="1" data-track-index="11" data-volume="0.65" src="assets/sfx/interface/drop_001.ogg"></audio>
+      <audio id="sfx-09" class="clip" data-start="8.39" data-duration="1" data-track-index="12" data-volume="0.65" src="assets/sfx/interface/drop_002.ogg"></audio>
+      <audio id="sfx-10" class="clip" data-start="9.45" data-duration="1" data-track-index="13" data-volume="0.65" src="assets/sfx/interface/drop_003.ogg"></audio>
+
+      <!-- SFX: photo cuts, beats 10.54 / 11.60 / 12.65 / 13.70 -->
+      <audio id="sfx-11" class="clip" data-start="10.50" data-duration="0.8" data-track-index="14" data-volume="0.6" src="assets/sfx/casino/card-place-1.ogg"></audio>
+      <audio id="sfx-12" class="clip" data-start="11.56" data-duration="0.8" data-track-index="15" data-volume="0.6" src="assets/sfx/casino/card-place-2.ogg"></audio>
+      <audio id="sfx-13" class="clip" data-start="12.61" data-duration="0.8" data-track-index="16" data-volume="0.6" src="assets/sfx/casino/card-place-3.ogg"></audio>
+      <audio id="sfx-14" class="clip" data-start="13.66" data-duration="0.8" data-track-index="17" data-volume="0.6" src="assets/sfx/casino/card-place-4.ogg"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      /* ---- Scene 1: hook (0–3.7) ---- */
+      // kicker types out 0.4–1.45s (18 chars, ~0.058s each) — keypress SFX cover the start sparsely
+      tl.to("#kicker .ch", { opacity: 1, duration: 0.02, stagger: 0.058 }, 0.4);
+      // title slam — beat-locked: 2.12s (beat grid, vol-9 @114.84bpm)
+      tl.fromTo("#title-main",
+        { opacity: 0, scale: 1.22, filter: "blur(14px)" },
+        { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.38, ease: "power3.out" }, 2.12);
+      tl.fromTo("#title-glow", { opacity: 0 }, { opacity: 1, duration: 0.25, ease: "power2.out" }, 2.12);
+      tl.to("#title-glow", { opacity: 0.35, duration: 0.9, ease: "power2.inOut" }, 2.45);
+
+      /* ---- Scene 2: hero (3.7–7.0) — cut lands on strong cue 3.70s ---- */
+      tl.fromTo("#hero-img", { scale: 1.04 }, { scale: 1.1, duration: 3.3, ease: "none" }, 3.7);
+      tl.fromTo("#hero-caption",
+        { opacity: 0, y: 26 },
+        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 4.3);
+      // caption settled 4.75–7.0 (≥2s hold)
+
+      /* ---- Scene 3: spec chips — beat-grid: 7.40 / 8.44 / 9.50 ---- */
+      const chipIn = { opacity: 0, y: 60, scale: 0.94 };
+      const chipOut = { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "power3.out" };
+      tl.fromTo("#chip1", chipIn, chipOut, 7.40);
+      tl.fromTo("#chip2", chipIn, chipOut, 8.44);
+      tl.fromTo("#chip3", chipIn, chipOut, 9.50);
+      // all three settle together 9.9–10.5
+
+      /* ---- Scene 4: samples — cuts on beats 10.54 / 11.60 / 12.65 / 13.70 ---- */
+      // strong cue 10.54 opens the sequence
+      tl.fromTo("#shot-night", { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 0.28, ease: "power2.out" }, 10.54);
+      tl.set("#shot-night", { opacity: 0 }, 11.60);
+      tl.fromTo("#shot-portrait", { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 0.28, ease: "power2.out" }, 11.60);
+      tl.set("#shot-portrait", { opacity: 0 }, 12.65);
+      tl.fromTo("#shot-tele", { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 0.28, ease: "power2.out" }, 12.65);
+      tl.set("#shot-tele", { opacity: 0 }, 13.70);
+      tl.fromTo("#shot-macro", { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 0.28, ease: "power2.out" }, 13.70);
+      // macro holds 13.70–15.0 (1.3s)
+
+      /* ---- Scene 5: reveal (15–20) — line2 lands near strong cue 15.28+1.5 ---- */
+      tl.fromTo("#line1", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 15.3);
+      tl.fromTo("#line2", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 16.8);
+      tl.fromTo("#credit", { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.inOut" }, 18.1);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

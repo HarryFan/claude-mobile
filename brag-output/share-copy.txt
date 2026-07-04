@@ -1,0 +1,25 @@
+═══ 小紅書 / Threads 貼文 ═══
+
+我用一個 HTML 檔案，寫了一場旗艦手機發表會 📱✨
+
+沒有建置流程、沒有 3D 模型檔——
+手機是 Three.js 用基礎幾何體「畫」出來的，
+捲動就是運鏡，點一下整支手機重新上漆，
+連樣張都是 AI 按鏡頭規格生成的。
+
+這不是手機廣告，是一個網頁。
+完整作品在部落格 → harryfan.github.io/blog
+
+#前端開發 #作品集 #ThreeJS #WebGL #網頁設計 #SideProject #工程師日常 #Portfolio
+
+═══ X / LinkedIn 短版 ═══
+
+一場旗艦手機發表會，只需要一個 HTML 檔案。
+Three.js 純 primitives 建模、捲動驅動運鏡、即時換色配置器、AI 生成樣張。
+AURA X — 我的新作品 → harryfan.github.io/blog
+
+═══ 影片用途備註 ═══
+
+brag.mp4（20s 直式 1080×1920）：小紅書 / Reels / Shorts / 抖音主打
+aura-x-scroll.mp4（26s 橫式 1920×1080）：部落格內嵌、X、LinkedIn、作品集網站展示
+xhs-cards/card-1~8.png（1242×1656）：小紅書圖文貼（封面→亮點→技術→CTA 順序發）
