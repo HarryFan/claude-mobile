@@ -452,6 +452,19 @@ footer{
 footer a{color:var(--sub);text-decoration:none;margin-right:22px}
 footer a:hover{color:var(--text)}
 
+/* portfolio watermark */
+.watermark{
+  position:fixed;right:clamp(18px,3vw,40px);bottom:22px;z-index:31;
+  font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--faint);text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+  opacity:.85;transition:color .4s,opacity .4s;
+}
+.watermark::before{
+  content:"";width:22px;height:1px;background:currentColor;opacity:.6;
+}
+.watermark:hover{color:var(--accent);opacity:1}
+
 /* aria-live visually hidden */
 .sr-only{
   position:absolute;width:1px;height:1px;padding:0;margin:-1px;
@@ -770,6 +783,8 @@ footer a:hover{color:var(--text)}
 </footer>
 
 <div class="sr-only" aria-live="polite" id="live-region"></div>
+
+<a class="watermark" href="https://harryfan.github.io/blog/" target="_blank" rel="noopener">Crafted by Harry Fan</a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
