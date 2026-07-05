@@ -438,6 +438,14 @@ details .a{padding:0 6px 26px;color:var(--sub);font-size:14.5px;max-width:680px}
 #final{
   min-height:120vh;display:flex;flex-direction:column;
   justify-content:center;align-items:center;text-align:center;
+  position:relative;
+}
+#final::before{
+  content:'';position:absolute;left:50%;top:50%;
+  width:min(920px,94vw);height:min(640px,72vh);
+  transform:translate(-50%,-50%);
+  background:radial-gradient(ellipse at center, rgba(8,9,12,.82) 0%, rgba(8,9,12,.5) 48%, rgba(8,9,12,0) 74%);
+  z-index:-1;pointer-events:none;
 }
 #final h2{font-size:clamp(38px,6.5vw,84px)}
 #final .lede{margin:22px auto 0}
@@ -826,8 +834,8 @@ const phone = THREE_OK ? new THREE.Group() : null;
 const lensParts = [];   // exploded-view parts: {obj, base, out}
 const anchors = {};     // hotspot anchor points
 
-// screen wallpaper drawn to canvas — redrawn on theme swap
-function drawScreen(accentHex) {
+// screen wallpaper drawn to canvas — redrawn on theme swap or lock-clock visibility change
+function drawScreen(accentHex, showClock = true) {
   const c = screenTex.image, ctx = c.getContext('2d');
   const W = c.width, H = c.height;
   ctx.fillStyle = '#05060a';
@@ -843,13 +851,15 @@ function drawScreen(accentHex) {
   g.addColorStop(1, 'transparent');
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, W, H);
-  ctx.fillStyle = 'rgba(255,255,255,.95)';
-  ctx.font = '600 88px -apple-system, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('9:41', W / 2, H * 0.2);
-  ctx.font = '32px -apple-system, sans-serif';
-  ctx.fillStyle = 'rgba(255,255,255,.55)';
-  ctx.fillText('10月24日 星期六', W / 2, H * 0.26);
+  if (showClock) {
+    ctx.fillStyle = 'rgba(255,255,255,.95)';
+    ctx.font = '600 88px -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('9:41', W / 2, H * 0.2);
+    ctx.font = '32px -apple-system, sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,.55)';
+    ctx.fillText('10月24日 星期六', W / 2, H * 0.26);
+  }
   screenTex.needsUpdate = true;
 }
 
@@ -1065,10 +1075,13 @@ const tgt = { ...cur };
 let heroSpin = 0;          // accumulated ambient spin while in hero
 let phase = 'hero';        // for hotspot visibility
 let mouseX = 0, mouseY = 0, lookX = 0, lookY = 0;
+let currentAccent = themes.obsidian.accent; // tracks last-applied theme for lock-clock redraws
+let clockVisible = true;   // lock-screen clock hidden behind the final-CTA headline to avoid overlap
 
 function updateTargets() {
   const r = scrollY / VH();
   const M = marks;
+  const prevPhase = phase;
 
   if (r < M.camera - 0.25) {
     /* Phase 1 — 全景 hero */
@@ -1128,10 +1141,17 @@ function updateTargets() {
     const p = unmix(M.preorder - 0.5, M.end, r);
     tgt.ry = nearAngle(-0.35, cur.ry) + p * 0.5;
     tgt.rx = 0.03;
-    tgt.cz = fit(p, 0, 1, 6.5, 5.2, easeInOut);
+    tgt.cz = fit(p, 0, 1, 8.5, 9.6, easeInOut);
     tgt.cy = 0; tgt.cx = 0;
-    tgt.ty = fit(p, 0.5, 1, 0, -0.15);
-    tgt.explode = 0; tgt.dim = 1; tgt.scale = 1;
+    tgt.ty = fit(p, 0, 1, 0, -0.2, easeInOut);
+    tgt.explode = 0; tgt.dim = fit(p, 0, 1, 0.28, 0.45, easeInOut); tgt.scale = 1;
+  }
+
+  // final-CTA headline sits over the phone screen — hide the lock-clock there so
+  // "9:41 · 10月24日" doesn't collide with "下一個時代，已經在你手上。"
+  if (webglOK && phase !== prevPhase) {
+    if (phase === 'final') { clockVisible = false; drawScreen(currentAccent, false); }
+    else if (prevPhase === 'final') { clockVisible = true; drawScreen(currentAccent, true); }
   }
 }
 
@@ -1233,7 +1253,8 @@ function applyTheme(key) {
     bodyMat.color.setHex(t.body);
     frameMat.color.setHex(t.frame);
     glowRingMat.color.setHex(t.glow);
-    drawScreen(t.accent);
+    currentAccent = t.accent;
+    drawScreen(t.accent, clockVisible);
     cyanLight.color.setHex(t.glow);
   }
   document.documentElement.style.setProperty('--accent', t.accent);
