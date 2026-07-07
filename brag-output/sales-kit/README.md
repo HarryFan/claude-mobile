@@ -35,7 +35,7 @@ AURA X 作品   → outreach-         → discovery-call-         → proposal- 
 ## 行動計畫（2026-07 策略與定價分析後，依優先序）
 
 ### P0 — 寄出第一封 outreach 前的前置條件
-- [ ] **部署 AURA X 到公開網址**——所有 outreach 模板的 `[連結]` 目前填不出來，這是一切的前置
+- [x] **部署 AURA X 到公開網址**——<https://nice-mobile-eta.vercel.app/>（2026-07-08 確認上線，outreach 模板連結已回填）
 - [ ] 把 AURA X 技術故事（「一個 HTML 檔裝下整場發表會」+ 20 秒影片）發到 Threads / X / LinkedIn——工程師轉發、創辦人看見，零預算認知路徑
 
 ### P1 — 第一個付費客戶（目標：三個月內兩個可具名案例，不是營收）

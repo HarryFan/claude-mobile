@@ -56,7 +56,8 @@ AURA X 是一個以旗艦產品敘事為概念打造的 scroll-driven landing pa
 這個作品的重點，不只是畫面精緻，而是證明高技術密度的體驗，依然可以維持清晰、克制與商業導向。
 
 專案參考：
-- [index.html](../../index.html)
+- 線上展示：<https://nice-mobile-eta.vercel.app/>
+- 原始碼：[index.html](../../index.html)
 - [composition-brief.md](../composition-brief.md)
 - [share-copy.txt](../share-copy.txt)
 - 案例研究：[case-study.md](case-study.md)
