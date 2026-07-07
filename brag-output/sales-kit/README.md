@@ -23,12 +23,13 @@ AURA X 作品   → outreach-         → discovery-call-         → proposal- 
 | [discovery-call-script.md](discovery-call-script.md) | 內部 | 20 分鐘工作會談腳本。所有 outreach 的 CTA 都指向這裡 |
 | [faq-objections.md](faq-objections.md) | 內部 | 15 個常見疑慮回應框架。會談與提案階段的底稿 |
 | [proposal-template.md](proposal-template.md) | 對外(模板) | 正式提案。會談收斂到 A 之後，依 Internal Notes 補齊送出 |
+| [partner-quote-sheet.html](partner-quote-sheet.html) | 對外 | 轉介通路用報價單（BNI/合作夥伴）。可直接列印成 PDF 或放進簡報；含 3D 費用拆分與 WP 整合說明 |
 
 ## 使用紀律
 
 - **對外文件不直接暴露內部文件**：faq-objections、discovery-script、outreach-templates 是底稿，不寄給客戶
 - **一次觸及一個 CTA**：全流程只推「20 分鐘工作會談」，不同時推 portfolio、報價、訂閱
-- **價格只在兩個地方出現**：one-pager 的參考區間、proposal 的正式報價。outreach 與會談不報價
+- **價格只在三個地方出現**：one-pager 的參考區間、proposal 的正式報價、partner-quote-sheet 的通路版區間。改價一律先改 one-pager，再同步其餘兩處。outreach 與會談不報價
 - **AURA X 每份文件最多引用一次**：proof 是敲門磚，不是全部內容
 - **提案前必填** proposal-template.md 的 Internal Notes 五項
 
@@ -39,6 +40,7 @@ AURA X 作品   → outreach-         → discovery-call-         → proposal- 
 - [ ] 把 AURA X 技術故事（「一個 HTML 檔裝下整場發表會」+ 20 秒影片）發到 Threads / X / LinkedIn——工程師轉發、創辦人看見，零預算認知路徑
 
 ### P1 — 第一個付費客戶（目標：三個月內兩個可具名案例，不是營收）
+- [x] BNI 轉介通路（Together & Nathan，香港 7/7-7/12、商會 7/8-7/9）：partner-quote-sheet.html 已於承諾日 2026-07-08 完成，待 Harry 檢查後交付
 - [ ] 一度/二度人脈定向轉介：列 15-20 個新創圈人脈，請求「轉介 90 天內要 launch 或募資的團隊」，不是推銷
 - [ ] 硬體/裝置新創定向狙擊：AURA X 對硬體新創是同題型 proof，選 5-8 家（募資新聞、Computex、Kickstarter 台灣團隊），用 Template 5 放大版觸及
 - [ ] 創始客戶方案已寫入 one-pager（限 3 名、Core 實收 NT$168k、折扣換案例權，2026-10-31 到期）
@@ -48,6 +50,6 @@ AURA X 作品   → outreach-         → discovery-call-         → proposal- 
 - [ ] （可選）第二個概念作品：刻意選無實體的 AI infra / devtools 產品，補上敘事系統的另一半證明
 
 ### 待決策
-- [ ] 是否增加產品化入門項「頁面敘事診斷＋Hero 概念稿」（NT$25,000-45,000、一週交付、可全額折抵正式專案）——補「免費會談 → 六位數提案」之間的信任踏板
+- [x] ~~是否增加產品化入門項「頁面敘事診斷＋Hero 概念稿」~~——已採用（2026-07-08），寫入 one-pager 參考投資區間與 partner-quote-sheet；動機：BNI 轉介通路需要「幾萬起」的預算錨點
 - [ ] outreach 英文版——有海外 prospect 時逐封改寫，不直翻
 - [ ] 成交後交付流程文件（kick-off checklist、交接說明模板）——第一個真實案子啟動前補

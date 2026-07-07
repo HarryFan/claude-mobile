@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>敘事型 Landing Page — 服務與投資區間</title>
+<style>
+  :root {
+    --ink: #1c1c1e;
+    --muted: #6e6e73;
+    --hair: #d9d4cc;
+    --accent: #a3743d;
+    --paper: #fdfcfa;
+    --wash: #f4f1ec;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    color: var(--ink);
+    background: #e8e5e0;
+    line-height: 1.75;
+    font-size: 13.5px;
+    letter-spacing: 0.02em;
+  }
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--paper);
+    padding: 56px 64px;
+  }
+  h1, h2, .brand {
+    font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+    font-weight: 600;
+  }
+  /* ---- masthead ---- */
+  .masthead { border-bottom: 2px solid var(--ink); padding-bottom: 20px; margin-bottom: 28px; }
+  .brand { font-size: 12px; letter-spacing: 0.35em; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; }
+  h1 { font-size: 27px; line-height: 1.4; margin-bottom: 10px; }
+  .masthead p { color: var(--muted); max-width: 40em; }
+  /* ---- sections ---- */
+  section { margin-bottom: 30px; }
+  h2 {
+    font-size: 16px; margin-bottom: 12px; padding-left: 12px;
+    border-left: 3px solid var(--accent);
+    line-height: 1.5;
+  }
+  h2 small { font-family: inherit; font-size: 11px; color: var(--muted); letter-spacing: 0.12em; margin-left: 8px; }
+  p + p { margin-top: 8px; }
+  .muted { color: var(--muted); }
+  /* ---- demo cards ---- */
+  .demos { display: flex; gap: 16px; }
+  .demo {
+    flex: 1; border: 1px solid var(--hair); padding: 16px 18px; background: var(--wash);
+  }
+  .demo .name { font-weight: 700; font-size: 14px; }
+  .demo .tag { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+  .demo a { color: var(--accent); text-decoration: none; font-size: 12px; word-break: break-all; }
+  .demo p { font-size: 12.5px; margin-top: 6px; }
+  /* ---- pricing table ---- */
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 11px 12px; vertical-align: top; }
+  thead th {
+    font-size: 11px; letter-spacing: 0.15em; color: var(--muted);
+    border-bottom: 1px solid var(--ink); font-weight: 500;
+  }
+  tbody tr { border-bottom: 1px solid var(--hair); }
+  td.tier { font-weight: 700; white-space: nowrap; }
+  td.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.price strong { color: var(--accent); }
+  td.desc { color: var(--muted); font-size: 12.5px; }
+  .table-note { font-size: 12px; color: var(--muted); margin-top: 10px; }
+  /* ---- callout ---- */
+  .callout {
+    background: var(--wash); border-left: 3px solid var(--accent);
+    padding: 16px 20px; margin-top: 6px;
+  }
+  .callout ul { list-style: none; }
+  .callout li { padding-left: 1.2em; text-indent: -1.2em; margin-bottom: 6px; }
+  .callout li::before { content: "— "; color: var(--accent); }
+  .callout li:last-child { margin-bottom: 0; }
+  /* ---- founding ---- */
+  .founding {
+    border: 1px solid var(--ink); padding: 20px 24px;
+  }
+  .founding .headline { font-weight: 700; margin-bottom: 8px; }
+  .founding .figures { font-size: 15px; margin-bottom: 8px; }
+  .founding .figures strong { color: var(--accent); font-size: 18px; }
+  .founding p { font-size: 12.5px; color: var(--muted); }
+  /* ---- footer ---- */
+  footer {
+    border-top: 2px solid var(--ink); margin-top: 36px; padding-top: 16px;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    font-size: 12px; color: var(--muted); flex-wrap: wrap;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  /* ---- print ---- */
+  @page { size: A4; margin: 14mm 0; }
+  @media print {
+    body { background: #fff; font-size: 12px; }
+    .sheet { max-width: none; padding: 0 18mm; }
+    .page-break { break-before: page; }
+    section { break-inside: avoid; }
+  }
+  @media (max-width: 640px) {
+    .sheet { padding: 32px 24px; }
+    .demos { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="brand">Narrative Landing Page</div>
+    <h1>為高價值產品打造敘事型 Landing Page<br>服務說明與投資區間</h1>
+    <p>我們為科技與精品類品牌規劃、設計與手工開發 scroll-driven 敘事頁面——讓複雜或高單價的產品，在訪客第一次捲動時就被理解、被記住。</p>
+  </header>
+
+  <section>
+    <h2>先看作品<small>DEMO</small></h2>
+    <div class="demos">
+      <div class="demo">
+        <div class="name">AURA X</div>
+        <div class="tag">旗艦智慧手機發表會頁面（中文）</div>
+        <a href="https://nice-mobile-eta.vercel.app/">nice-mobile-eta.vercel.app</a>
+        <p>單一 HTML 檔案承載完整發表會體驗：3D 產品亮相、捲動運鏡、即時配置器、editorial 級規格呈現。</p>
+      </div>
+      <div class="demo">
+        <div class="name">CHRONOS</div>
+        <div class="tag">高級製錶品牌頁面（英文）</div>
+        <a href="https://nice-watch.vercel.app/">nice-watch.vercel.app</a>
+        <p>Haute Horlogerie 質感的敘事捲動頁，示範精品級品牌氛圍如何以純前端手工實作完成。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>投資區間<small>PRICING</small></h2>
+    <table>
+      <thead>
+        <tr><th>方案</th><th>投資區間</th><th>適合情境</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="tier">敘事診斷</td>
+          <td class="price"><strong>NT$25,000</strong>–45,000</td>
+          <td class="desc">頁面敘事診斷＋Hero 概念稿。一週交付；後續進入正式專案可全額折抵。適合想先小步驗證的團隊。</td>
+        </tr>
+        <tr>
+          <td class="tier">Starter</td>
+          <td class="price"><strong>NT$150,000</strong>–190,000</td>
+          <td class="desc">方向明確、素材齊備的聚焦型單頁。含完整敘事架構與 scroll 節奏設計——與模板建站的差異在策略層。</td>
+        </tr>
+        <tr>
+          <td class="tier">Core</td>
+          <td class="price"><strong>NT$200,000</strong>–320,000</td>
+          <td class="desc">完整 scroll-driven 敘事、較強品牌表現與正式前端實作的產品頁。多數合作從這裡開始。</td>
+        </tr>
+        <tr>
+          <td class="tier">Signature</td>
+          <td class="price"><strong>NT$350,000</strong> 起</td>
+          <td class="desc">launch 關鍵頁、高互動密度、完整體驗設計控制。上限依專案範圍另議，不設固定天花板。</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="table-note">估價維度為敘事複雜度、互動層級、素材條件、決策參與深度與時程——不是頁數。正式報價於 20 分鐘工作會談後提出。</p>
+  </section>
+
+  <section>
+    <h2>3D 素材費用獨立計算<small>3D ASSETS</small></h2>
+    <p>頁面中的 3D 產品模型是獨立的專業工項：<strong>網站是一筆費用，3D 素材是另一筆費用</strong>，兩者拆開報價、拆開決策。</p>
+    <div class="callout">
+      <ul>
+        <li><strong>業主已有 3D 素材</strong>（產品 3D 檔、CAD、渲染資產）——直接整合進頁面，整合工時已含在網站費用內，不另收模型費。</li>
+        <li><strong>需要從零建模</strong>——依模型精度、材質表現與授權需求另行評估報價，會談時一併釐清。</li>
+        <li><strong>不用 3D 也能成立</strong>——以 2D 視覺與動效完成的敘事頁（Starter 區間）同樣具備完整策略與節奏設計。</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section>
+    <h2>技術與整合<small>TECHNOLOGY</small></h2>
+    <div class="callout">
+      <ul>
+        <li>純手工前端實作（原生 CSS/JS、Three.js），不依賴模板工具，效果與效能完全可控。</li>
+        <li><strong>可整合進 WordPress</strong>——交付為 WP 可用版本，不犧牲互動效果，方便既有網站架構的團隊採用。</li>
+        <li>內建效能預算、裝置相容與合理降級策略：手機上一樣流暢，舊裝置優雅退場。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>2026 創始客戶方案<small>FOUNDING CLIENTS</small></h2>
+    <div class="founding">
+      <div class="headline">開放 3 個名額（Core 範圍）· 有效期至 2026-10-31</div>
+      <div class="figures">專案定價 NT$240,000　→　創始客戶實收 <strong>NT$168,000</strong>（抵減 NT$72,000）</div>
+      <p>對價條件：完整 case study 撰寫與發布授權、logo 與推薦語使用權、上線後 30 天成效數據分享。折抵反映的是早期客戶承擔的信任成本——以行銷資產支付部分費用，而非折扣價。名額用罄或到期即恢復標準定價。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>下一步<small>NEXT STEP</small></h2>
+    <p>透過引薦人安排一次 <strong>20 分鐘工作會談</strong>。會談聚焦三件事：這個頁面真正需要傳達什麼、現有網站在哪裡低估了產品價值、什麼程度的互動在策略上是合理的。會談後若方向收斂，我們在 24 小時內承諾正式提案的送達日期。</p>
+  </section>
+
+  <footer>
+    <div>Harry Fan · 敘事型 Landing Page 設計與開發</div>
+    <div>作品與文章：<a href="https://harryfan.github.io/blog/">harryfan.github.io/blog</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
