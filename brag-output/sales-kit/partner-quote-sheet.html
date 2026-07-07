@@ -49,9 +49,9 @@
   p + p { margin-top: 8px; }
   .muted { color: var(--muted); }
   /* ---- demo cards ---- */
-  .demos { display: flex; gap: 16px; }
+  .demos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .demo {
-    flex: 1; border: 1px solid var(--hair); padding: 16px 18px; background: var(--wash);
+    border: 1px solid var(--hair); padding: 16px 18px; background: var(--wash);
   }
   .demo .name { font-weight: 700; font-size: 14px; }
   .demo .tag { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
@@ -131,6 +131,18 @@
         <div class="tag">高級製錶品牌頁面（英文）</div>
         <a href="https://nice-watch.vercel.app/">nice-watch.vercel.app</a>
         <p>Haute Horlogerie 質感的敘事捲動頁，示範精品級品牌氛圍如何以純前端手工實作完成。</p>
+      </div>
+      <div class="demo">
+        <div class="name">NOIR AMBRE</div>
+        <div class="tag">法式香水品牌頁面（英文）</div>
+        <a href="https://luxry-perfume.vercel.app/">luxry-perfume.vercel.app</a>
+        <p>Maison de Parfum 調性的沉浸式品牌敘事，示範抽象感官型產品如何被視覺化與記住。</p>
+      </div>
+      <div class="demo">
+        <div class="name">拾霧珈琲 SHIWU</div>
+        <div class="tag">精品咖啡豆商品頁（中文）</div>
+        <a href="https://coffee-bean-bag.vercel.app/">coffee-bean-bag.vercel.app</a>
+        <p>單一精品消費品的完整商品敘事頁，示範同一套敘事方法在電商情境的落地。</p>
       </div>
     </div>
   </section>

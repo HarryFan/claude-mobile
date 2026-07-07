@@ -62,6 +62,11 @@ AURA X 是一個以旗艦產品敘事為概念打造的 scroll-driven landing pa
 - [share-copy.txt](../share-copy.txt)
 - 案例研究：[case-study.md](case-study.md)
 
+更多公開作品（不同產業的同法驗證）：
+- CHRONOS 高級製錶（英文）：<https://nice-watch.vercel.app/>
+- NOIR AMBRE 法式香水（英文）：<https://luxry-perfume.vercel.app/>
+- 拾霧珈琲 SHIWU 精品咖啡（中文）：<https://coffee-bean-bag.vercel.app/>
+
 ## 常見合作情境
 - 旗艦產品 landing page
 - 產品 launch 或 campaign page
