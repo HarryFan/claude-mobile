@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>轉介夥伴手冊 — 敘事型 Landing Page</title>
+<style>
+  :root {
+    --ink: #1c1c1e;
+    --muted: #6e6e73;
+    --hair: #d9d4cc;
+    --accent: #a3743d;
+    --paper: #fdfcfa;
+    --wash: #f4f1ec;
+    --warn: #8c3a2b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    color: var(--ink);
+    background: #e8e5e0;
+    line-height: 1.75;
+    font-size: 13.5px;
+    letter-spacing: 0.02em;
+  }
+  .sheet { max-width: 760px; margin: 0 auto; background: var(--paper); padding: 56px 64px; }
+  h1, h2, .brand { font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif; font-weight: 600; }
+  .masthead { border-bottom: 2px solid var(--ink); padding-bottom: 20px; margin-bottom: 28px; }
+  .brand { font-size: 12px; letter-spacing: 0.35em; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; }
+  h1 { font-size: 27px; line-height: 1.4; margin-bottom: 10px; }
+  .masthead p { color: var(--muted); max-width: 42em; }
+  section { margin-bottom: 30px; }
+  h2 { font-size: 16px; margin-bottom: 12px; padding-left: 12px; border-left: 3px solid var(--accent); line-height: 1.5; }
+  h2 small { font-size: 11px; color: var(--muted); letter-spacing: 0.12em; margin-left: 8px; }
+  p + p { margin-top: 8px; }
+  a { color: var(--accent); text-decoration: none; }
+  .muted { color: var(--muted); }
+  /* quote block — 可照唸 */
+  .script {
+    background: var(--wash); border-left: 3px solid var(--accent);
+    padding: 18px 22px; font-size: 14.5px; line-height: 2;
+  }
+  .script .label { font-size: 11px; letter-spacing: 0.15em; color: var(--accent); display: block; margin-bottom: 6px; }
+  /* two-col checklists */
+  .cols { display: flex; gap: 16px; }
+  .col { flex: 1; border: 1px solid var(--hair); padding: 16px 18px; }
+  .col.good { background: var(--wash); }
+  .col .head { font-weight: 700; font-size: 13px; margin-bottom: 8px; }
+  .col.bad .head { color: var(--warn); }
+  .col ul { list-style: none; }
+  .col li { padding-left: 1.3em; text-indent: -1.3em; margin-bottom: 6px; font-size: 12.5px; }
+  .col.good li::before { content: "✓ "; color: var(--accent); font-weight: 700; }
+  .col.bad li::before { content: "✕ "; color: var(--warn); font-weight: 700; }
+  /* QA list */
+  .qa { border-bottom: 1px solid var(--hair); padding: 12px 2px; }
+  .qa:last-child { border-bottom: none; }
+  .qa .q { font-weight: 700; margin-bottom: 4px; }
+  .qa .q::before { content: "Q・"; color: var(--accent); }
+  .qa .a { color: var(--ink); font-size: 13px; }
+  .qa .a::before { content: "A・"; color: var(--muted); }
+  /* steps */
+  .steps { counter-reset: step; }
+  .step { display: flex; gap: 16px; margin-bottom: 14px; }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    font-family: "Noto Serif TC", serif; font-size: 20px; font-weight: 600; color: var(--accent);
+    flex: 0 0 28px; line-height: 1.4;
+  }
+  .step .body strong { display: block; margin-bottom: 2px; }
+  .step .body { font-size: 13px; }
+  .step .body .muted { font-size: 12.5px; }
+  /* dont */
+  .dont { border: 1px solid var(--warn); padding: 16px 20px; }
+  .dont .head { color: var(--warn); font-weight: 700; margin-bottom: 8px; }
+  .dont ul { list-style: none; }
+  .dont li { padding-left: 1.3em; text-indent: -1.3em; margin-bottom: 6px; font-size: 12.5px; }
+  .dont li::before { content: "✕ "; color: var(--warn); font-weight: 700; }
+  .dont li:last-child { margin-bottom: 0; }
+  footer {
+    border-top: 2px solid var(--ink); margin-top: 36px; padding-top: 16px;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    font-size: 12px; color: var(--muted); flex-wrap: wrap;
+  }
+  @page { size: A4; margin: 14mm 0; }
+  @media print {
+    body { background: #fff; font-size: 12px; }
+    .sheet { max-width: none; padding: 0 18mm; }
+    .page-break { break-before: page; }
+    section { break-inside: avoid; }
+  }
+  @media (max-width: 640px) {
+    .sheet { padding: 32px 24px; }
+    .cols { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="brand">Partner Briefing · 夥伴專用</div>
+    <h1>轉介夥伴手冊<br>敘事型 Landing Page 服務</h1>
+    <p>這份手冊給引薦夥伴使用：怎麼介紹、哪些客戶適合、常見問題怎麼答、有興趣之後怎麼轉手。<strong>給客戶看的是另一份「報價單」（partner-quote-sheet）</strong>——這份手冊本身不對客戶展示。</p>
+  </header>
+
+  <section>
+    <h2>30 秒介紹詞<small>可照唸</small></h2>
+    <div class="script">
+      <span class="label">ELEVATOR PITCH</span>
+      「我有一位合作夥伴 Harry，專門為科技和精品品牌做<strong>高端敘事型的 landing page</strong>——就是那種像 Apple 發表會一樣、往下捲動會有 3D 產品展示和運鏡效果的頁面。他的作品你可以直接看：一個手機發表會頁面、一個瑞士錶品牌頁面，全部手工打造。價格從幾萬塊的入門診斷開始，正式專案十五萬起。如果你們最近要 launch 新產品、改版官網或對外募資，我可以幫你約他聊 20 分鐘。」
+    </div>
+    <p class="muted" style="margin-top:10px">Demo 連結（可直接傳給客戶）：AURA X 手機頁 <a href="https://nice-mobile-eta.vercel.app/">nice-mobile-eta.vercel.app</a>　·　CHRONOS 錶頁 <a href="https://nice-watch.vercel.app/">nice-watch.vercel.app</a></p>
+  </section>
+
+  <section>
+    <h2>哪些客戶適合轉介<small>QUALIFICATION</small></h2>
+    <div class="cols">
+      <div class="col good">
+        <div class="head">值得轉（有一項就可以聊）</div>
+        <ul>
+          <li>B2B 科技、SaaS、硬體裝置、精品類產品</li>
+          <li>產品高單價、客戶決策週期長</li>
+          <li>90 天內要 launch、改版、募資或參展</li>
+          <li>覺得「產品很強但網站看起來不像」</li>
+          <li>預算至少 15 萬，或願意從幾萬元的診斷開始試</li>
+        </ul>
+      </div>
+      <div class="col bad">
+        <div class="head">先不要轉（不是壞客戶，是不對盤）</div>
+        <ul>
+          <li>只想便宜快速上線——模板工具對他更划算</li>
+          <li>說不出頁面要達成什麼，只說「想要酷一點」</li>
+          <li>預算在 15 萬以下、又期待 Apple 等級成品</li>
+          <li>產品客單價低、衝動型購買——不需要這種頁面</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-break"></div>
+
+  <section>
+    <h2>客戶常問的八題<small>FAQ · 夥伴版簡答</small></h2>
+    <div class="qa"><div class="q">大概多少錢？</div><div class="a">入門診斷 2.5–4.5 萬（一週交付、之後可全額折抵）；正式專案 15 萬起，最高階不設上限。正式報價要等 20 分鐘會談之後，Harry 不隔空報價。</div></div>
+    <div class="qa"><div class="q">為什麼比一般建站貴？</div><div class="a">賣的不是「一個網頁」，是市場第一次感受到品牌級別的那個瞬間。如果產品單價低、決策快，他會直接告訴你用模板更划算——這種案子他不接。</div></div>
+    <div class="qa"><div class="q">3D 是不是很貴？</div><div class="a">3D 素材和網站是兩筆費用、拆開算。客戶手上已有 3D 檔或 CAD 的話，整合不另收費；要從零建模才另外估。而且不是每個產品都需要 3D，他常建議不要做。</div></div>
+    <div class="qa"><div class="q">可以放進 WordPress 嗎？</div><div class="a">可以，交付 WP 可整合版本，互動效果不打折。</div></div>
+    <div class="qa"><div class="q">要做多久？</div><div class="a">4–6 週。如果 launch 日期已經定了，會從日期倒推鎖範圍。時程變數主要在客戶的決策速度和素材準備，不在實作。</div></div>
+    <div class="qa"><div class="q">有真實客戶案例嗎？</div><div class="a">目前是兩個公開概念作品（AURA X、CHRONOS），程式碼公開可驗。所以有創始客戶方案：2026 年前三個客戶用優惠價換案例授權，另外有分階段付款、第一階段可中止的保護結構——不是要客戶「相信他」，是讓客戶幾乎不用賭。</div></div>
+    <div class="qa"><div class="q">是團隊還是一個人？</div><div class="a">單人全包、需要時協作建模師等第三方。對客戶的意義：沒有轉包損耗，開會的人就是寫 code 的人。</div></div>
+    <div class="qa"><div class="q">做到一半跑掉怎麼辦？</div><div class="a">分階段付款（50/30/20），每筆款對應已確認的成果；第一階段做完不滿意可以就地中止，已交付的架構文件歸客戶。</div></div>
+    <p class="muted" style="margin-top:10px">超出這八題的（技術架構、確切報價、時程承諾）——不用硬答，直接說「這個讓 Harry 在會談裡回答比較準」。</p>
+  </section>
+
+  <section>
+    <h2>有興趣之後，三步轉手<small>HANDOFF</small></h2>
+    <div class="steps">
+      <div class="step"><div class="body">
+        <strong>給資料</strong>
+        傳報價單（partner-quote-sheet）＋兩個 demo 連結給客戶。就這兩樣，不用多。
+      </div></div>
+      <div class="step"><div class="body">
+        <strong>收四項資訊</strong>
+        ① 公司與產品網址　② 商業時刻與時間點（launch／募資／改版，什麼時候）　③ 手上有沒有 3D 模型或視覺素材　④ 大概的預算範圍。
+        <span class="muted">不齊也沒關係，有幾項給幾項。</span>
+      </div></div>
+      <div class="step"><div class="body">
+        <strong>丟給 Harry 約 20 分鐘會談</strong>
+        把資訊轉給 Harry，他會談前會先研究客戶網站、帶著具體判斷進場；會談後 24 小時內給客戶明確下一步。<span class="muted">之後的提案、報價、成交都由 Harry 接手，你不用再跟。</span>
+      </div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>三件不要做的事<small>GUARDRAILS</small></h2>
+    <div class="dont">
+      <div class="head">替雙方省掉麻煩</div>
+      <ul>
+        <li><strong>不要報死價格</strong>——只講區間（幾萬起、專案 15 萬起）。確切數字是會談後的正式提案才有。</li>
+        <li><strong>不要承諾時程</strong>——「大約 4–6 週」可以講，「某月某日一定上線」不行，那要 Harry 評估過素材與範圍才能承諾。</li>
+        <li><strong>不要把這份手冊給客戶</strong>——客戶只看報價單和 demo。這份是我們自己人的底稿。</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div>Harry Fan · 敘事型 Landing Page 設計與開發</div>
+    <div>作品與文章：<a href="https://harryfan.github.io/blog/">harryfan.github.io/blog</a></div>
+  </footer>
+
+</div>
+</body>
+</html>

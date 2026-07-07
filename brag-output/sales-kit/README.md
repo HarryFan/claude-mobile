@@ -24,6 +24,7 @@ AURA X 作品   → outreach-         → discovery-call-         → proposal- 
 | [faq-objections.md](faq-objections.md) | 內部 | 15 個常見疑慮回應框架。會談與提案階段的底稿 |
 | [proposal-template.md](proposal-template.md) | 對外(模板) | 正式提案。會談收斂到 A 之後，依 Internal Notes 補齊送出 |
 | [partner-quote-sheet.html](partner-quote-sheet.html) | 對外 | 轉介通路用報價單（BNI/合作夥伴）。可直接列印成 PDF 或放進簡報；含 3D 費用拆分與 WP 整合說明 |
+| [partner-briefing.html](partner-briefing.html) | 夥伴 | 轉介夥伴手冊：30 秒介紹詞、轉介資格判斷、FAQ 夥伴版簡答、三步轉手流程。給引薦人自己看，不給客戶 |
 
 ## 使用紀律
 
@@ -40,7 +41,7 @@ AURA X 作品   → outreach-         → discovery-call-         → proposal- 
 - [ ] 把 AURA X 技術故事（「一個 HTML 檔裝下整場發表會」+ 20 秒影片）發到 Threads / X / LinkedIn——工程師轉發、創辦人看見，零預算認知路徑
 
 ### P1 — 第一個付費客戶（目標：三個月內兩個可具名案例，不是營收）
-- [x] BNI 轉介通路（Together & Nathan，香港 7/7-7/12、商會 7/8-7/9）：partner-quote-sheet.html 已於承諾日 2026-07-08 完成，待 Harry 檢查後交付
+- [x] BNI 轉介通路（Together & Nathan，香港 7/7-7/12、商會 7/8-7/9）：partner-quote-sheet.html（給客戶）＋ partner-briefing.html（給夥伴）已於承諾日 2026-07-08 完成，待 Harry 檢查後交付
 - [ ] 一度/二度人脈定向轉介：列 15-20 個新創圈人脈，請求「轉介 90 天內要 launch 或募資的團隊」，不是推銷
 - [ ] 硬體/裝置新創定向狙擊：AURA X 對硬體新創是同題型 proof，選 5-8 家（募資新聞、Computex、Kickstarter 台灣團隊），用 Template 5 放大版觸及
 - [ ] 創始客戶方案已寫入 one-pager（限 3 名、Core 實收 NT$168k、折扣換案例權，2026-10-31 到期）
