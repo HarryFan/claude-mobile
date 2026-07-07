@@ -32,9 +32,22 @@ AURA X 作品   → outreach-         → discovery-call-         → proposal- 
 - **AURA X 每份文件最多引用一次**：proof 是敲門磚，不是全部內容
 - **提案前必填** proposal-template.md 的 Internal Notes 五項
 
-## 待補事項
+## 行動計畫（2026-07 策略與定價分析後，依優先序）
 
-- [ ] faq-objections.md「有無真實客戶案例」段落——依實際情況填寫
+### P0 — 寄出第一封 outreach 前的前置條件
+- [ ] **部署 AURA X 到公開網址**——所有 outreach 模板的 `[連結]` 目前填不出來，這是一切的前置
+- [ ] 把 AURA X 技術故事（「一個 HTML 檔裝下整場發表會」+ 20 秒影片）發到 Threads / X / LinkedIn——工程師轉發、創辦人看見，零預算認知路徑
+
+### P1 — 第一個付費客戶（目標：三個月內兩個可具名案例，不是營收）
+- [ ] 一度/二度人脈定向轉介：列 15-20 個新創圈人脈，請求「轉介 90 天內要 launch 或募資的團隊」，不是推銷
+- [ ] 硬體/裝置新創定向狙擊：AURA X 對硬體新創是同題型 proof，選 5-8 家（募資新聞、Computex、Kickstarter 台灣團隊），用 Template 5 放大版觸及
+- [ ] 創始客戶方案已寫入 one-pager（限 3 名、Core 實收 NT$168k、折扣換案例權，2026-10-31 到期）
+
+### P2 — 補 proof 缺口（AURA X 證明不了「抽象 SaaS 怎麼做」）
+- [ ] SaaS 頁面敘事 teardown 系列：每週一篇公開拆解，同時是 proof、內容行銷、outreach 彈藥
+- [ ] （可選）第二個概念作品：刻意選無實體的 AI infra / devtools 產品，補上敘事系統的另一半證明
+
+### 待決策
+- [ ] 是否增加產品化入門項「頁面敘事診斷＋Hero 概念稿」（NT$25,000-45,000、一週交付、可全額折抵正式專案）——補「免費會談 → 六位數提案」之間的信任踏板
 - [ ] outreach 英文版——有海外 prospect 時逐封改寫，不直翻
-- [ ] AURA X 公開連結（目前文件內以相對路徑指向 repo，對外寄送時需替換為線上 URL）
 - [ ] 成交後交付流程文件（kick-off checklist、交接說明模板）——第一個真實案子啟動前補
