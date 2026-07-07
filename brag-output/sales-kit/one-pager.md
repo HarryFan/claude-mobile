@@ -56,9 +56,10 @@ AURA X 是一個以旗艦產品敘事為概念打造的 scroll-driven landing pa
 這個作品的重點，不只是畫面精緻，而是證明高技術密度的體驗，依然可以維持清晰、克制與商業導向。
 
 專案參考：
-- [index.html](file:///Users/harry/Documents/github/claude-mobile/index.html)
-- [composition-brief.md](file:///Users/harry/Documents/github/claude-mobile/brag-output/composition-brief.md)
-- [share-copy.txt](file:///Users/harry/Documents/github/claude-mobile/brag-output/share-copy.txt)
+- [index.html](../../index.html)
+- [composition-brief.md](../composition-brief.md)
+- [share-copy.txt](../share-copy.txt)
+- 案例研究：[case-study.md](case-study.md)
 
 ## 常見合作情境
 - 旗艦產品 landing page
