@@ -25,6 +25,8 @@ AURA X 作品   → outreach-         → discovery-call-         → proposal- 
 | [proposal-template.md](proposal-template.md) | 對外(模板) | 正式提案。會談收斂到 A 之後，依 Internal Notes 補齊送出 |
 | [partner-quote-sheet.html](partner-quote-sheet.html) | 對外 | 轉介通路用報價單（BNI/合作夥伴）。可直接列印成 PDF 或放進簡報；含 3D 費用拆分與 WP 整合說明 |
 | [partner-briefing.html](partner-briefing.html) | 夥伴 | 轉介夥伴手冊：30 秒介紹詞、轉介資格判斷、FAQ 夥伴版簡答、三步轉手流程。給引薦人自己看，不給客戶 |
+| [sales-kit-deck.pptx](sales-kit-deck.pptx) | 對外 | 10 頁深色簡報（含 [PDF 版](sales-kit-deck.pdf)）：定位、四作品截圖、投資區間、3D 拆分、WP 整合、創始客戶方案。可直接併入夥伴的 BNI 簡報 |
+| partner-quote-sheet.pdf / partner-briefing.pdf | 對外/夥伴 | 上述兩份 HTML 的 PDF 版，LINE 直傳用 |
 
 ## 使用紀律
 
